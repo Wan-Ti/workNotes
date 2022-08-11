@@ -10,17 +10,17 @@
 
 ```
 "devServer": {
-			"https": false,
-			"proxy": { //配置代理服务器来解决跨域问题，uniapp不适用CORS方案和设置JSONP方案
-				"/locationApi": {
-					"target": "https://apis.map.qq.com",
+	"https": false,
+	"proxy": { //配置代理服务器来解决跨域问题，uniapp不适用CORS方案和设置JSONP方案
+	"/locationApi": {
+		"target": "https://apis.map.qq.com",
 					"changeOrigin": true,
 					"secure": false,
 					"pathRewrite": {
 						"^/locationApi": ""
 					}
 				}
-			}
+			}									
 },
 ```
 
