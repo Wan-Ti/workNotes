@@ -107,7 +107,19 @@ height:200px
 
 ```
 
+## 2022-09-07
 
+### Echart 文字自适应方法：
+
+```
+/* Echart文字自适应 */
+function fontSize(res){
+    let clientWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+    if (!clientWidth) return;
+    let fontSize = clientWidth / 1920;
+    return res * fontSize;
+};
+```
 
 
 
