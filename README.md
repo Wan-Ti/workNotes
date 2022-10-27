@@ -121,6 +121,76 @@ function fontSize(res){
 };
 ```
 
+## 2022-10-27
+
+### Vue实现电视机飘窗效果
+
+```
+<div class="fixed" @mouseenter="stoptime" @mouseleave="startTime" :style="{ display: display,top:top,left:left }">
+  <span class="close_img" @click="close()">关闭X</span>
+</div>
+
+data() {
+  return {
+      display: "block",
+      top:'0px',
+      left:'0px',
+      timeInveral:null,
+    };  
+},
+mounted(){
+    this.fixedImg();
+},
+destoryed(){
+    clearInterval(this.timeInveral);
+},  
+methods: {
+  close() {
+      this.display = "none";
+    },
+    fixedImg() {
+      let iw = 150;//图片的宽度
+      let ih = 200;//图片的高度
+      let ws = parseInt(this.left);//当前图片与浏览器页面左边框距离
+      let hs = parseInt(this.top);//当前图片与浏览器页面上边框距离
+      let screenw = window.innerWidth;//浏览器页面宽度
+      let screenh = window.innerHeight;//浏览器高度
+      let cw = screenw - iw;//图片left属性最大值
+      let ch = screenh - ih;//图片top属性最大值
+      let wss = 1;//每次水平移动距离
+      let hss = 1;//每次垂直移动距离
+      //启动定时器
+      this.timeInveral = setInterval(() => {
+        ws += wss; hs += hss;
+        if (hs > ch) {
+          hs = ch; hss = -hss;
+        }
+        if (hs <= 0) {
+          hss = -hss;
+        }
+        if (ws > cw) {
+          ws = cw; wss = -wss;
+        }
+        if (ws <= 0) {
+          wss = -wss;
+        }
+        this.top = hs + "px";
+        this.left = ws + "px";
+      }, 15);
+    },
+    stoptime(){
+      clearInterval(this.timeInveral);
+    },
+    startTime(){
+      this.fixedImg();
+    }  
+},
+
+备注：类名为fixed的元素需要设置定位为position:fixed;并调整相应的层级
+```
+
+### 
+
 
 
 
