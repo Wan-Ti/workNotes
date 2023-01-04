@@ -1,5 +1,15 @@
 # workNotes
 
+## 2023-01-04
+
+### 误将node_modules文件夹提交到远程仓库处理办法
+
+```
+git rm -r --cached node_modules   // 删除远程仓库中的文件夹
+git commit -m "remove node_modules" //提交信息
+git push //提交到远程仓库
+```
+
 ## 前端样式规范：
 
 ### HTML + CSS
