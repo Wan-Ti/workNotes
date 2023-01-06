@@ -1,5 +1,28 @@
 # workNotes
 
+## 2023-01*06
+
+### 函数防抖
+```
+/*
+	 * 防抖
+	 */
+	Vue.prototype.debounce = function(callback, duration, isFirstExecution = false) {
+		let debounceTimer = null;
+		return function(...args) {
+			let ctx = this;
+			const delay = function() {
+				debounceTimer = null;
+				if (!isFirstExecution) callback.apply(ctx, args);
+			};
+			let executeNow = isFirstExecution && !debounceTimer;
+			clearTimeout(debounceTimer);
+			debounceTimer = setTimeout(delay, duration);
+			if (executeNow) callback.apply(ctx, args);
+		};
+	}	
+```
+
 ## 2023-01-04
 
 ### 误将node_modules文件夹提交到远程仓库处理办法
