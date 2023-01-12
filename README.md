@@ -1,6 +1,63 @@
 # workNotes
 
-## 2023-01*06
+## 2023-01-12
+
+### Vue 修改对象数组中新增属性的值时，页面未同步更新
+
+问题描述：</br>
+点击按钮切换播放与暂停状态，状态显示方式为图片，切换开关为新增属性。修改属性后，页面样式未同步更新到；</br>
+解决办法：</br>
+
+```
+将 targetClass.isPlay = true 改为
+
+this.$set(targetClass, "isPlay", true)
+```
+
+### uniapp页面滚动时自动切换Tab
+
+思路：</br>
+页面加载时获取目标元素距离页面顶部；</br>
+```
+//uniapp页面滚动监听方法
+onPageScroll(e) {
+  this.getTop();
+},
+
+onLoad(){
+  this.getTop = this.debounce(function() {
+	this.selectQuery('.desc').then(res => {
+	  if (res.top < 0) {
+	    this.tabActive = 1;
+	  } else {
+	    this.tabActive = 0;
+	  }
+	});
+ }, 200);
+}
+```
+
+```
+	/**
+	 * 获取dom元素样式
+	 * @param {String} selector 选择器
+	 */
+	Vue.prototype.selectQuery = function(selector) {
+		const selectQuery = uni.createSelectorQuery();
+		return new Promise(resolve => {
+			selectQuery.in(this).select(selector).boundingClientRect(res => {
+				resolve(res);
+			}).exec();
+		})
+	}
+	
+	// 使用时
+	this.selectQuery('.componyIntro').then(res => {
+		this.scrollTop[1] = res.top;
+	});
+```
+
+## 2023-01-06
 
 ### 函数防抖
 ```
