@@ -1,5 +1,74 @@
 # workNotes
 
+## 2023-02-08
+
+### IE字体文件引用
+
+描述：IE不支持ttf文件。可将ttf转化为woff文件
+
+```
+@font-face {
+    font-family: 'YouSheBiaoTiHei';
+    src: url('YouSheBiaoTiHei.woff'),
+         url('YouSheBiaoTiHei.eot?#iefix') format('embedded-opentype');
+}
+```
+
+### IE浏览器100vh进行大屏页面响应式适配时出现外边距合并的情况
+
+问题描述：</br>
+近期在完成一次前端大屏静态页面的过程中，使用vh与vw以及flex布局进行响应式兼容。结果发现IE浏览器对flex布局兼容性很差，导致页面底部多出一部分。
+
+解决办法：</br>
+```
+body,html{
+  width:100vw;
+  height:100vh;
+  overflow:hidden;//重点
+}
+```
+
+### 扩展 - overflower:hidden的三个用法
+
+#### 一：清除浮动
+
+#### 二：溢出隐藏
+
+#### 三：解决外边距塌陷
+
+```
+父级元素内部有子元素，如果给子元素添加margin-top样式，那么父级元素也会跟着下来，造成外边距塌陷，如下：
+/*css样式*/
+<style type="text/css">
+    .box{ background:skyblue;}
+    .kid{ width: 100px;height: 100px; background: yellow; margin-top: 20px}
+</style>
+ 
+/*html*/
+<body>
+    <div class="box">
+	<div class="kid">子元素1</div>
+    </div>
+</body>
+
+因此给父级元素添加overflower:hidden解决该问题
+/*css样式*/
+<style type="text/css">
+    .box{ background:skyblue;
+          overflow: hidden; /*解决外边距塌陷*/   
+        }
+    .kid{ width: 100px;height: 100px; background: yellow; margin-top: 20px}
+</style>
+ 
+/*html*/
+<body>
+    <div class="box">
+	<div class="kid">子元素1</div>
+    </div>
+</body>
+```
+
+
 ## 2023-01-12
 
 ### Vue 修改对象数组中新增属性的值时，页面未同步更新
