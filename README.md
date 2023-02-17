@@ -22,11 +22,11 @@ associated:function ($item) {
 
 重点！！！！
 
-<font color="red">closest()方法从当前元素，沿 DOM 树向上遍历，直到找到已应用选择器的一个匹配为止。该匹配元素包括自身</font>
+##### <font color="red">closest()方法从当前元素，沿 DOM 树向上遍历，直到找到已应用选择器的一个匹配为止。该匹配过程包括自身</font>
 
 解决办法：
 
-<font color="red">使用``` $(item).parents(".tree-item:eq(0)") ``` 替代该方法</font>
+##### <font color="red">使用``` $(item).parents(".tree-item:eq(0)") ``` 替代该方法</font>
 
 
 
