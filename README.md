@@ -1,5 +1,35 @@
 # workNotes
 
+## 2023-02-17
+
+### closest() 导致的无限循环BUG修改
+
+问题描述：
+
+通过closest()查找当前的元素最近的指定父元素，判断该父元素下所有checkBox是否为勾选状态（通过类名判断），如果为否则该父元素不为勾选状态，若为是则勾选当前父元素（通过类名进行控制）。</br>
+实现代码如下：
+```
+associated:function ($item) {
+  let $parent = $item.closest(".tree);
+  if($parent.length == 0) {
+    ...
+    associated($parent)
+  }
+} 
+```
+
+在执行过程中发现该方法陷入了死循环，一番探查之后原来是$parent 与$item是同一对象 </br>
+
+重点！！！！
+
+<font color="red">closest()方法从当前元素，沿 DOM 树向上遍历，直到找到已应用选择器的一个匹配为止。该匹配元素包括自身</font>
+
+解决办法：
+
+<font color="red">使用``` $(item).parents(".tree-item:eq(0)") ``` 替代该方法</font>
+
+
+
 ## 2023-02-08
 
 ### IE字体文件引用
