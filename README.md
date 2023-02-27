@@ -1,5 +1,40 @@
 # workNotes
 
+## 2023-02-27 uniapp开发页面注意点
+
+### 一：交互按钮需要注意连续点击可能会引起的问题
+
+描述：新增页面中点击确定进行接口请求，请求后返回列表页。解决办法：</br>
+
+```
+data(){
+ return {
+  status:'loading',
+ }
+},
+methods:{
+ addData(){
+  if(this.status == 'loading'){
+   this.status = 'finished';
+   addData().then(res=>{
+    if(res.code == 200) {
+     this.status = 'loading';
+    }
+   }).catech(error => {
+    this.status = 'loading'
+   })	
+  }
+  
+ }
+}
+```
+
+### 二：uniapp页面返回渲染问题
+
+
+
+### 三：
+
 ## 2023-02-17
 
 ### closest() 导致的无限循环BUG修改
