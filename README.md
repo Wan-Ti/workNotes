@@ -1,5 +1,23 @@
 # workNotes
 
+## 2023-02-28
+
+### 手机号验证
+
+```
+checkPhone() {
+				let r = /^[1]([3-9])[0-9]{9}$/;
+				if (!r.test(this.phone)) {
+					uni.showToast({
+						icon: 'none',
+						title: '请输入正确的手机号'
+					})
+					return false;
+				}
+				return true
+			},
+```
+
 ## 2023-02-27 uniapp开发页面注意点
 
 ### 一：交互按钮需要注意连续点击可能会引起的问题
