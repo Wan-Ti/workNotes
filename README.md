@@ -1,5 +1,44 @@
 # workNotes
 
+## 2023-03-01
+
+### 文字两端对齐
+
+类似于如下效果：
+```
+航   班  号：Mu3678
+预计旅客人数：10
+目 前 出 行：50
+```
+
+css:text-align-last:justify;
+
+```
+text-align: justify;
+text-align-last: right;
+-moz-text-align-last: right; } /* 针对 Firefox 的代码 */
+```
+
+### text-align-last:justify不支持ios
+
+```
+.item {
+ text-align: justify;
+ text-align-last: right;
+ -moz-text-align-last: right; } /* 针对 Firefox 的代码 */
+  
+  &:after {
+    content: ‘’;
+    width: 100%;
+    height: 0;
+    display: inline-block;
+    visibility: hidden;
+  }
+}
+
+```
+
+
 ## 2023-02-28
 
 ### 手机号验证
