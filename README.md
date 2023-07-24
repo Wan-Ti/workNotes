@@ -9,6 +9,17 @@
 点击按钮后给元素新增一个class：'scroll'，然后再次点击的时候，希望移除该class，结果发现并未移除；</br>
 原因是addClass和removeClass之间时间间隔太断了，几乎是addClass后瞬间再次执行removeClass导致了未执行；
 
+### 新增CSS技巧：
+
+#### CSS选择器选择前几个元素
+
+```
+例如选择前三个元素
+&:nth-child(-n+3){
+  margin-top: 0;
+}
+```
+
 ## 2023-03-01
 
 ### 文字两端对齐
