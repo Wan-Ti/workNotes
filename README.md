@@ -1,5 +1,35 @@
 # workNotes
 
+## 2023-07-26
+
+### 图片上添加热区，并匹配点击事件
+
+需求描述：
+一个树状图上每个分支顶端需要添加热区，热区内分配点击事件
+
+```
+使用img + map +area配套使用
+<div class="treeBox">
+   <img src="./images/bg_tree.png" alt="" usemap="#plantMap" id="imageId">
+   <map name="plantMap" style="cursor: pointer">
+       <area shape="circle" coords="218,91,20" alt="Venus" class="circleOne">
+  </map>
+</div>
+
+<script>
+  imgClick()=> {
+   $("#imageId").on("click",function (e) {
+     console.log($("#imageId").offset());
+     // 鼠标指针相对于元素的坐标
+     console.log('X：'+e.offsetX+' Y:'+e.offsetY);
+  });
+  $(".circleOne").on("click",function (e) {
+     console.log('研发');
+     console.log('X：'+e.offsetX+' Y:'+e.offsetY);
+  })
+}
+</script>
+```
 ## 2023-07-24
 
 ### jquery removeClass 失效
