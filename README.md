@@ -1,5 +1,24 @@
 # workNotes
 
+## 2023-11-02
+
+### sass公共样式封装
+
+需求描述：CSS文字超出元素省略，单行，多行
+
+```
+@mixin ellipsis($line) {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    word-break: break-all;
+    white-space: nowrap;
+
+    display: -webkit-box;
+    -webkit-line-clamp:$line;
+    -webkit-box-orient: vertical;
+}
+```
+
 ## 2023-07-26
 
 ### 图片上添加热区，并匹配点击事件
