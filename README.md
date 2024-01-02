@@ -1,5 +1,36 @@
 # workNotes
 
+## 2024-01-01
+
+### 分步表单的校验过程
+
+```
+1:动态控制每个form的refs值
+<template>
+  <div class="main">
+    <div v-if="stepIndex == 0">
+	<el-form :model="form1"
+                 :ref="'formRef' + stepIndex"
+                 :rules="rules1"">
+	   <el-form-item prop="username">
+           </el-form-item>
+	</el-form>
+    </div>
+    <div v-if="stepIndex == 1">
+	<el-form :model="form2"
+                 :ref="'formRef' + stepIndex"
+                 :rules="rules2"">
+	   <el-form-item prop="username">
+           </el-form-item>
+	</el-form>
+    </div>
+  </div>
+</template>
+this.$refs['formRef' + this.stepIndex]
+
+2：控制每个步骤表单的显隐使用V-if而不要使用v-show
+```
+
 ## 2023-11-02
 
 ### sass公共样式封装
